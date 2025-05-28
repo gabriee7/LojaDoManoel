@@ -1,0 +1,37 @@
+services:
+  sqlserver-db:
+    container_name: boxoptimizer-sql-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "14330:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Gabriel@2025!" 
+    volumes:
+      - boxoptimizer_db_data:/var/opt/mssql
+
+
+  boxoptimizer-api:
+    container_name: boxoptimizer-api
+    build:
+      context: .
+      dockerfile: BoxOptimizerMicroservice/Dockerfile
+      target: final-api 
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://+:8080"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver-db;Database=BoxOptimizerDB;User ID=sa;Password=Gabriel@2025!;TrustServerCertificate=True;Encrypt=False;"
+    depends_on:
+      - sqlserver-db
+
+  tests:
+    container_name: boxoptimizer-tests-runner
+    build:
+      context: . 
+      dockerfile: BoxOptimizerMicroservice/Dockerfile
+      target: test-runner 
+
+volumes:
+  boxoptimizer_db_data:
