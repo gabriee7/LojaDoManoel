@@ -17,7 +17,7 @@
    cd LojaDoManoel/BoxOptimizerMicroservice
    ```
 
-3. **Construir e iniciar containers**  
+3. **Construir e iniciar containers**  *(certifique-se que o Docker está rodando antes de executar o seguinte comando)*
    ```bash
    docker-compose up --build -d
    ```
