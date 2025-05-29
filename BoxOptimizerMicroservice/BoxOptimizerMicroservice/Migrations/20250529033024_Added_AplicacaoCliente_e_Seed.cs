@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BoxOptimizerMicroservice.Migrations
 {
     /// <inheritdoc />
-    public partial class Added_ClientApplication_e_Seed : Migration
+    public partial class Added_AplicacaoCliente_e_Seed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,7 +29,7 @@ namespace BoxOptimizerMicroservice.Migrations
             migrationBuilder.InsertData(
                 table: "AplicacaoCliente",
                 columns: new[] { "_id", "LastModifiedTime", "CreationTime", "HashedApiKey", "Nome" },
-                values: new object[] { new Guid("2a8badd0-2a0a-4b79-b51f-9e7a0e2b8c3d"), null, new DateTime(2025, 5, 27, 12, 0, 0, 0, DateTimeKind.Utc), "61fIzNFUoKv3An80F60QB/bJrDAw2H+B+uwvRegT644=", "Aplicação Cliente via Seed" });
+                values: new object[] { new Guid("2a8badd0-2a0a-4b79-b51f-9e7a0e2b8c3d"), null, new DateTime(2025, 5, 27, 12, 0, 0, 0, DateTimeKind.Utc), "j64ozfVUMg8VNebgsSgo1gwb6y5aPx+sIyH2SgAjP34=", "Aplicação Cliente via Seed" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AplicacaoCliente_Nome",

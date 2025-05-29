@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BoxOptimizerMicroservice.Migrations
 {
     [DbContext(typeof(BoxOptimizerDbContext))]
-    [Migration("20250528012452_Added_ClientApplication_e_Seed")]
-    partial class Added_ClientApplication_e_Seed
+    [Migration("20250529033024_Added_AplicacaoCliente_e_Seed")]
+    partial class Added_AplicacaoCliente_e_Seed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,7 +129,7 @@ namespace BoxOptimizerMicroservice.Migrations
                         {
                             _id = new Guid("2a8badd0-2a0a-4b79-b51f-9e7a0e2b8c3d"),
                             _creationTime = new DateTime(2025, 5, 27, 12, 0, 0, 0, DateTimeKind.Utc),
-                            _hashedKey = "61fIzNFUoKv3An80F60QB/bJrDAw2H+B+uwvRegT644=",
+                            _hashedKey = "j64ozfVUMg8VNebgsSgo1gwb6y5aPx+sIyH2SgAjP34=",
                             _nome = "Aplicação Cliente via Seed"
                         });
                 });
