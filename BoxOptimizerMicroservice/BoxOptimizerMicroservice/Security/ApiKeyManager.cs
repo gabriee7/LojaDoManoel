@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace BoxOptimizerMicroservice.Security
 {
@@ -11,7 +12,7 @@ namespace BoxOptimizerMicroservice.Security
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(randomNumber);
-                return Convert.ToBase64String(randomNumber);
+                return WebEncoders.Base64UrlEncode(randomNumber);
             }
         }
 

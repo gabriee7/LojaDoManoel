@@ -11,7 +11,8 @@ namespace BoxOptimizerMicroservice.EntityFramework
         private static readonly Guid _caixa3Id = new Guid("C9F0B7A2-5E1D-4C9A-B2D8-2A0E1C9F8B7D");
 
         private static readonly Guid _clientAppId = new Guid("2a8badd0-2a0a-4b79-b51f-9e7a0e2b8c3d");
-        public const string _clientAppApiKey = "k/AbnN9pS+CaYm9pDkSn3wRzW8qYxXq0MwQzV6bXy0E=";
+        public const string _clientAppApiKey = "RzW8qYxXq0MwQzV6bXy0Ek_AbnN9pS-CaYm9pDkSn3w";
+
         public static void Seed(ModelBuilder modelBuilder)
         {
             SeedCaixas(modelBuilder);
