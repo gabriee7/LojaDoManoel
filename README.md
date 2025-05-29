@@ -21,7 +21,7 @@
    ```bash
    docker-compose up --build -d
    ```
-   A configuração do docker compose contém a construção e inicialização da API e do SQLServer, além da execução dos testes unitários (xUnit e Moq).
+   A configuração do docker compose contém a construção e inicialização da API e do SQLServer, além da execução dos testes unitários (xUnit, Moq e EF in-memory).
 ## Acessar a API
 
 - **Swagger UI:** `http://localhost:8080/swagger`  
