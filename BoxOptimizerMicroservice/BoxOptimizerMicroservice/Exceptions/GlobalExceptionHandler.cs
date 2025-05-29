@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 using System.Net;
 using System.Text.Json;
 
@@ -27,31 +28,23 @@ namespace BoxOptimizerMicroservice.Exceptions
                 httpContext.Request.Path,
                 exception.Message);
 
-            httpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            httpContext.Response.ContentType = "application/json";
+            int statusCode = (int)HttpStatusCode.InternalServerError;
+            string detail = "Ocorreu um erro inesperado ao processar sua requisição.";
 
-            object responsePayload;
-            string mensagemClientePadrao = "Ocorreu um erro inesperado ao processar sua requisição.";
+            if (exception is ApiKeyMissingException || exception is InvalidApiKeyException)
+            {
+                statusCode = (int)HttpStatusCode.Unauthorized;
+                detail = exception.Message;
+            }
 
-            if (_env.IsDevelopment())
+            httpContext.Response.StatusCode = statusCode;
+            httpContext.Response.ContentType = "application/problem+json";
+
+            object responsePayload = new
             {
-                responsePayload = new
-                {
-                    status = httpContext.Response.StatusCode,
-                    titulo = "Erro no Servidor (Desenvolvimento)",
-                    mensagem = exception.Message,
-                    tipo = exception.GetType().Name
-                };
-            }
-            else
-            {
-                responsePayload = new
-                {
-                    status = httpContext.Response.StatusCode,
-                    titulo = "Erro no Servidor",
-                    mensagem = mensagemClientePadrao
-                };
-            }
+                status = httpContext.Response.StatusCode,
+                mensagem = exception.Message,
+            };
 
             await httpContext.Response.WriteAsync(
                 JsonSerializer.Serialize(
