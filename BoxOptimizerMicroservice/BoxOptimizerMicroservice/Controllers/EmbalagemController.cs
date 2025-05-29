@@ -16,7 +16,7 @@ namespace BoxOptimizerMicroservice.Controllers
             _otimizadorEmbalagemService = otimizadorEmbalagemService;
         }
 
-        [HttpPost]
+        [HttpPost("Otimizar")]
         [AuthApiKey]
         public async Task<ActionResult<ResponsePedidosDto>> Otimizar(
             [FromBody] RequestPedidosDto request) 
